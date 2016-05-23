@@ -1,0 +1,20 @@
+timestep=20.0
+brain_file=/disk/no_backup/schulze/NRP_32/music_nest/simulator_backend/test/music_test/brainfile.py
+port_config_file=/disk/no_backup/schulze/NRP_32/music_nest/simulator_backend/test/music_test/music.xml
+
+[nest]
+  np=1
+  binary=./sim_launcher.py
+
+[cle_dummy]
+  np=1
+  binary=./cle_dummy.py
+
+nest.spike_detector -> cle_dummy.spike_detector[15]
+
+nest.pop_rate -> cle_dummy.pop_rate[1]
+cle_dummy.pop_rate_rpc -> nest.pop_rate_rpc[1]
+
+nest.error_port -> cle_dummy.error_port[1]
+cle_dummy.nest_rpc -> nest.nest_rpc[1]
+

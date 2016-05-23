@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Root>
+    <Device>
+        <portname>Port1</portname>
+        <type>ACSource</type>
+        <setter>
+            <type>Cont</type>
+            <property>rate</property>
+        </setter>
+    </Device>
+</Root>
+
+
+

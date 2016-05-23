@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Root>
+    <Device>
+        <portname>Port1</portname>
+        <type>ACSource</type>
+        <observer>
+            <type>Cont</type>
+            <property>rate</property>
+        </observer>
+        <observer>
+            <type>Cont</type>
+            <property>offset</property>
+        </observer>
+    </Device>
+</Root>
+
+
+

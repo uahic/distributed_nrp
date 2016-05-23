@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Root>
+    <Device>
+        <type>PopulationRate</type>
+        <portname>pop_rate</portname>
+    </Device>
+    <Device>
+        <portname>spike_detector</portname>
+        <type>SpikeRecorder</type>
+        <parameters>
+            <parameter name="target_population_label">pop1</parameter>
+        </parameters>
+    </Device>
+</Root>
+
