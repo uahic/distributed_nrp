@@ -18,7 +18,7 @@ from . music_setup import accLatency as global_accLatency
 _population_dict = {}
 
 def create_system_rpc_port(port_name):
-    system_rpc_port = SimulatorPorts.RPCPort(music_setup, "{}_rpc".format(port_name), global_accLatency)
+    system_rpc_port = SimulatorPorts.RPCInPort(music_setup, "{}_rpc".format(port_name), global_accLatency)
     return system_rpc_port
 
 def create_error_port(port_name):

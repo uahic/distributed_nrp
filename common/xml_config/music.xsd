@@ -5,7 +5,14 @@
 
         <xs:complexType name="RootElement">
             <xs:sequence>
+                <xs:element name="Applications" type="ApplicationType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element name="Device" type="DeviceType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="ApplicationType">
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
 
@@ -13,10 +20,16 @@
             <xs:all>
                 <xs:element name="portname" type="xs:string"/>
                 <xs:element name="type" type="ModelType"/>
-                <xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
-                <xs:element name="observer" type="Observer" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="setter" type="Setter" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="from" type="PeerType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="to" type="PeerType" minOccurs="1" maxOccurs="unbounded"/>
             </xs:all>
+        </xs:complexType>
+
+        <xs:complexType name="PeerType">
+            <xs:sequence>
+                <xs:element name="application" type="xs:string"/>
+                <xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
         </xs:complexType>
 
         <xs:complexType name="ParameterList">
@@ -25,11 +38,24 @@
             </xs:sequence>
         </xs:complexType>
 
-
         <xs:complexType name="ParameterType" mixed="true">
             <xs:attribute name="name" type="xs:string" use="required"/>
         </xs:complexType>
 
+        <xs:simpleType name="ModelType">
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="ACSource"/>
+                <xs:enumeration value="DCSource"/>
+                <xs:enumeration value="FixedFrequency"/>
+                <xs:enumeration value="LeakyIntegratorAlpha"/>
+                <xs:enumeration value="LeakyIntegratorExp"/>
+                <xs:enumeration value="NCSource"/>
+                <xs:enumeration value="Poisson"/>
+                <xs:enumeration value="SpikeRecorder"/>
+                <xs:enumeration value="ContinuousRecorder"/>
+                <xs:enumeration value="PopulationRate"/>
+            </xs:restriction>
+        </xs:simpleType>
 
         <xs:complexType name="Observer">
           <xs:sequence>
@@ -60,18 +86,4 @@
             </xs:restriction>
         </xs:simpleType>
 
-        <xs:simpleType name="ModelType">
-            <xs:restriction base="xs:string">
-                <xs:enumeration value="ACSource"/>
-                <xs:enumeration value="DCSource"/>
-                <xs:enumeration value="FixedFrequency"/>
-                <xs:enumeration value="LeakyIntegratorAlpha"/>
-                <xs:enumeration value="LeakyIntegratorExp"/>
-                <xs:enumeration value="NCSource"/>
-                <xs:enumeration value="Poisson"/>
-                <xs:enumeration value="SpikeRecorder"/>
-                <xs:enumeration value="ContinuousRecorder"/>
-                <xs:enumeration value="PopulationRate"/>
-            </xs:restriction>
-        </xs:simpleType>
 </xs:schema>

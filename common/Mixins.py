@@ -1,23 +1,24 @@
-from music_nest.common.Interfaces import Connectable, Updateable
-from music_nest.simulator_backend.Ports import RPCPort
-from music_nest.cle.__music_setup import music_setup 
-from music_nest.cle.__music_setup import accLatency as global_acc_latency 
 
 class RPCInPortMixin(object):
 
-    def __init__(self, port_name, *args, **kwargs):
-        super(RPCMixin, self).__init__(*args, **kwargs)
-        self._rpc_port = RPCPort(music_setup, "{}_rpc".format(port_name), global_acc_latency, 1)
+    def __init__(self, port_name, music_setup, accLatency, maxBuffered, *args, **kwargs):
+        super(RPCInPortMixin, self).__init__(*args, **kwargs)
+        self.rpc_port = RPCInPort(music_setup, "{}_rpc".format(port_name), accLatency, maxBuffered=maxBuffered)
 
-class RemoteConnectableMixin(RPCMixin):
+class RPCOutPortMixin(object):
 
-    def __init__(self, port_name, *args, **kwargs):
-        super(RemoteConnectableMixin, self).__init__(port_name, *args, **kwargs)
-        self._rpc_port.register_callback('connect', self.connect)
-        self._rpc_port.register_callback('connect_via_ids', self.connect_via_ids)
+    def __init__(self, port_name, music_setup, maxBuffered, *args, **kwargs):
+        super(RPCOutPortMixin, self).__init__(*args, **kwargs)
+        self.rpc_port = RPCOutPort(music_setup, "{}_rpc".format(port_name), accLatency, maxBuffered)
 
-class RemoteUpdatableMixin(RPCMixin):
+class ConnectCallbackMixin(object):
 
-    def __init__(self, port_name, *args, **kwargs):
-        super(RemoteUpdatableMixin, self).__init__(port_name, *args, **kwargs)
-        self._rpc_port.register_callback('update', self.update)
+    def __init__(self, port_name, music_setup, accLatency, maxBuffered, *args, **kwargs):
+        super(ConnectCallbackMixin, self).__init__(port_name, music_setup, accLatency, maxBuffered *args, **kwargs)
+        self.rpc_port.register_callback('connect', self.connect)
+
+class RPCUpdateMixin(RPCOutPortMixin):
+
+    def __init__(self, port_name, music_setup, accLatency, maxBuffered, *args, **kwargs):
+        super(RPCUpdateMixin, self).__init__(port_name, music_setup, accLatency, maxBuffered, *args, **kwargs)
+        self.rpc_port.register_callback('update', self.update)

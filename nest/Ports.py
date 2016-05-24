@@ -1,7 +1,7 @@
 import nest
-from music_nest.common.Interfaces import Port
+from music_wizard.common.Interfaces import Port
 
-class ContOutputPort(object):
+class ContOutputPort(Port):
 
     def __init__(self, port_name, record_from, interval):
         self.port = nest.Create('music_cont_out_proxy')    
@@ -14,7 +14,7 @@ class ContOutputPort(object):
                     'interval': self.interval,
                     'target_gids': global_ids })
 
-class EventOutputPort(object):
+class EventOutputPort(Port):
     
     def __init__(self, port_name):
         self.port = nest.Create('music_event_out_proxy')

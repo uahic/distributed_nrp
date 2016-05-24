@@ -1,11 +1,17 @@
 import abc
 
+class Connector(object):
+    __metaclass__ = abc.ABCMeta
+
 class Port(object):
     __metaclass__ = abc.ABCMeta
-    _port_prefix = None
 
     def __init__(self):
-        super(Port, self).__init__()
+        super(Port, self).__init__(*args, **kwargs)
+
+    @abc.abstractmethod
+    def connect(self, target):
+        pass
 
 
 class DeviceMeta(abc.ABCMeta):
@@ -33,37 +39,13 @@ class DeviceMeta(abc.ABCMeta):
     def __setitem__(self, clsname, cls):
         DeviceMeta._device_classes[clsname] = cls
 
-class Device(object):
+class AbstractDevice(object):
     __metaclass__ = DeviceMeta
-    _port_prefix = None
 
     def __init__(self, *args, **kwargs):
-        super(Device, self).__init__(*args, **kwargs)
+        super(AbstractDevice, self).__init__(*args, **kwargs)
 
     @abc.abstractmethod
-    def _init_model(self):
+    def _create_device(self):
         pass
 
-class Connectable(object):
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        super(Connectable, self).__init__()
-
-    @abc.abstractmethod
-    def connect(self, target_pop):
-        pass
-
-    @abc.abstractmethod
-    def connect_via_ids(self, id_list):
-        pass
-
-class Updateable(object):
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        super(Updateable, self).__init__()
-
-    @abc.abstractmethod
-    def update(self, *args, **kwargs):
-        pass
