@@ -1,7 +1,7 @@
 # ./music_xml.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:e92452c8d3e28a9e27abfc9994d2007779e7f4c9
-# Generated 2016-05-18 14:15:55.466133 by PyXB version 1.2.4 using Python 2.7.6.final.0
+# Generated 2016-05-24 13:51:31.275486 by PyXB version 1.2.4 using Python 2.7.6.final.0
 # Namespace AbsentNamespace0
 
 from __future__ import unicode_literals
@@ -15,7 +15,7 @@ import sys
 import pyxb.utils.six as _six
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:4573beb4-1cf2-11e6-b152-002354bd6608')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:db33d6d4-21a5-11e6-81db-002354bd6608')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.4'
@@ -73,13 +73,35 @@ def CreateFromDOM (node, default_namespace=None):
     return pyxb.binding.basis.element.AnyCreateFromDOM(node, default_namespace)
 
 
+# Atomic simple type: ModelType
+class ModelType (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
+
+    """An atomic simple type."""
+
+    _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'ModelType')
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 45, 8)
+    _Documentation = None
+ModelType._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=ModelType, enum_prefix=None)
+ModelType.ACSource = ModelType._CF_enumeration.addEnumeration(unicode_value='ACSource', tag='ACSource')
+ModelType.DCSource = ModelType._CF_enumeration.addEnumeration(unicode_value='DCSource', tag='DCSource')
+ModelType.FixedFrequency = ModelType._CF_enumeration.addEnumeration(unicode_value='FixedFrequency', tag='FixedFrequency')
+ModelType.LeakyIntegratorAlpha = ModelType._CF_enumeration.addEnumeration(unicode_value='LeakyIntegratorAlpha', tag='LeakyIntegratorAlpha')
+ModelType.LeakyIntegratorExp = ModelType._CF_enumeration.addEnumeration(unicode_value='LeakyIntegratorExp', tag='LeakyIntegratorExp')
+ModelType.NCSource = ModelType._CF_enumeration.addEnumeration(unicode_value='NCSource', tag='NCSource')
+ModelType.Poisson = ModelType._CF_enumeration.addEnumeration(unicode_value='Poisson', tag='Poisson')
+ModelType.SpikeRecorder = ModelType._CF_enumeration.addEnumeration(unicode_value='SpikeRecorder', tag='SpikeRecorder')
+ModelType.ContinuousRecorder = ModelType._CF_enumeration.addEnumeration(unicode_value='ContinuousRecorder', tag='ContinuousRecorder')
+ModelType.PopulationRate = ModelType._CF_enumeration.addEnumeration(unicode_value='PopulationRate', tag='PopulationRate')
+ModelType._InitializeFacetMap(ModelType._CF_enumeration)
+Namespace.addCategoryObject('typeBinding', 'ModelType', ModelType)
+
 # Atomic simple type: MusicInPortType
 class MusicInPortType (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """An atomic simple type."""
 
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'MusicInPortType')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 49, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 75, 8)
     _Documentation = None
 MusicInPortType._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=MusicInPortType, enum_prefix=None)
 MusicInPortType.Cont = MusicInPortType._CF_enumeration.addEnumeration(unicode_value='Cont', tag='Cont')
@@ -93,34 +115,13 @@ class MusicOutPortType (pyxb.binding.datatypes.string, pyxb.binding.basis.enumer
     """An atomic simple type."""
 
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'MusicOutPortType')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 56, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 82, 8)
     _Documentation = None
 MusicOutPortType._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=MusicOutPortType, enum_prefix=None)
 MusicOutPortType.Cont = MusicOutPortType._CF_enumeration.addEnumeration(unicode_value='Cont', tag='Cont')
 MusicOutPortType.Msg = MusicOutPortType._CF_enumeration.addEnumeration(unicode_value='Msg', tag='Msg')
 MusicOutPortType._InitializeFacetMap(MusicOutPortType._CF_enumeration)
 Namespace.addCategoryObject('typeBinding', 'MusicOutPortType', MusicOutPortType)
-
-# Atomic simple type: ModelType
-class ModelType (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
-
-    """An atomic simple type."""
-
-    _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'ModelType')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 63, 8)
-    _Documentation = None
-ModelType._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=ModelType, enum_prefix=None)
-ModelType.ACSource = ModelType._CF_enumeration.addEnumeration(unicode_value='ACSource', tag='ACSource')
-ModelType.DCSource = ModelType._CF_enumeration.addEnumeration(unicode_value='DCSource', tag='DCSource')
-ModelType.FixedFrequency = ModelType._CF_enumeration.addEnumeration(unicode_value='FixedFrequency', tag='FixedFrequency')
-ModelType.LeakyIntegratorAlpha = ModelType._CF_enumeration.addEnumeration(unicode_value='LeakyIntegratorAlpha', tag='LeakyIntegratorAlpha')
-ModelType.LeakyIntegratorExp = ModelType._CF_enumeration.addEnumeration(unicode_value='LeakyIntegratorExp', tag='LeakyIntegratorExp')
-ModelType.NCSource = ModelType._CF_enumeration.addEnumeration(unicode_value='NCSource', tag='NCSource')
-ModelType.Poisson = ModelType._CF_enumeration.addEnumeration(unicode_value='Poisson', tag='Poisson')
-ModelType.SpikeRecorder = ModelType._CF_enumeration.addEnumeration(unicode_value='SpikeRecorder', tag='SpikeRecorder')
-ModelType.PopulationRate = ModelType._CF_enumeration.addEnumeration(unicode_value='PopulationRate', tag='PopulationRate')
-ModelType._InitializeFacetMap(ModelType._CF_enumeration)
-Namespace.addCategoryObject('typeBinding', 'ModelType', ModelType)
 
 # Complex type RootElement with content type ELEMENT_ONLY
 class RootElement (pyxb.binding.basis.complexTypeDefinition):
@@ -129,24 +130,59 @@ class RootElement (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'RootElement')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 6, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 6, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
+    # Element Applications uses Python identifier Applications
+    __Applications = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'Applications'), 'Applications', '__AbsentNamespace0_RootElement_Applications', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 8, 16), )
+
+    
+    Applications = property(__Applications.value, __Applications.set, None, None)
+
+    
     # Element Device uses Python identifier Device
-    __Device = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'Device'), 'Device', '__AbsentNamespace0_RootElement_Device', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 8, 16), )
+    __Device = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'Device'), 'Device', '__AbsentNamespace0_RootElement_Device', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 9, 16), )
 
     
     Device = property(__Device.value, __Device.set, None, None)
 
     _ElementMap.update({
+        __Applications.name() : __Applications,
         __Device.name() : __Device
     })
     _AttributeMap.update({
         
     })
 Namespace.addCategoryObject('typeBinding', 'RootElement', RootElement)
+
+
+# Complex type ApplicationType with content type ELEMENT_ONLY
+class ApplicationType (pyxb.binding.basis.complexTypeDefinition):
+    """Complex type ApplicationType with content type ELEMENT_ONLY"""
+    _TypeDefinition = None
+    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
+    _Abstract = False
+    _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'ApplicationType')
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 13, 8)
+    _ElementMap = {}
+    _AttributeMap = {}
+    # Base type is pyxb.binding.datatypes.anyType
+    
+    # Element name uses Python identifier name
+    __name = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'name'), 'name', '__AbsentNamespace0_ApplicationType_name', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 15, 16), )
+
+    
+    name = property(__name.value, __name.set, None, None)
+
+    _ElementMap.update({
+        __name.name() : __name
+    })
+    _AttributeMap.update({
+        
+    })
+Namespace.addCategoryObject('typeBinding', 'ApplicationType', ApplicationType)
 
 
 # Complex type DeviceType with content type ELEMENT_ONLY
@@ -156,56 +192,83 @@ class DeviceType (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'DeviceType')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 12, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 19, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
     # Element portname uses Python identifier portname
-    __portname = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'portname'), 'portname', '__AbsentNamespace0_DeviceType_portname', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 14, 16), )
+    __portname = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'portname'), 'portname', '__AbsentNamespace0_DeviceType_portname', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 21, 16), )
 
     
     portname = property(__portname.value, __portname.set, None, None)
 
     
     # Element type uses Python identifier type
-    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_DeviceType_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 15, 16), )
+    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_DeviceType_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 22, 16), )
 
     
     type = property(__type.value, __type.set, None, None)
 
     
-    # Element parameters uses Python identifier parameters
-    __parameters = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'parameters'), 'parameters', '__AbsentNamespace0_DeviceType_parameters', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 16, 16), )
+    # Element from uses Python identifier from_
+    __from = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'from'), 'from_', '__AbsentNamespace0_DeviceType_from', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 23, 16), )
 
     
-    parameters = property(__parameters.value, __parameters.set, None, None)
+    from_ = property(__from.value, __from.set, None, None)
 
     
-    # Element observer uses Python identifier observer
-    __observer = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'observer'), 'observer', '__AbsentNamespace0_DeviceType_observer', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 17, 16), )
+    # Element to uses Python identifier to
+    __to = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'to'), 'to', '__AbsentNamespace0_DeviceType_to', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 24, 16), )
 
     
-    observer = property(__observer.value, __observer.set, None, None)
-
-    
-    # Element setter uses Python identifier setter
-    __setter = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'setter'), 'setter', '__AbsentNamespace0_DeviceType_setter', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 18, 16), )
-
-    
-    setter = property(__setter.value, __setter.set, None, None)
+    to = property(__to.value, __to.set, None, None)
 
     _ElementMap.update({
         __portname.name() : __portname,
         __type.name() : __type,
-        __parameters.name() : __parameters,
-        __observer.name() : __observer,
-        __setter.name() : __setter
+        __from.name() : __from,
+        __to.name() : __to
     })
     _AttributeMap.update({
         
     })
 Namespace.addCategoryObject('typeBinding', 'DeviceType', DeviceType)
+
+
+# Complex type PeerType with content type ELEMENT_ONLY
+class PeerType (pyxb.binding.basis.complexTypeDefinition):
+    """Complex type PeerType with content type ELEMENT_ONLY"""
+    _TypeDefinition = None
+    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
+    _Abstract = False
+    _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'PeerType')
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 28, 8)
+    _ElementMap = {}
+    _AttributeMap = {}
+    # Base type is pyxb.binding.datatypes.anyType
+    
+    # Element application uses Python identifier application
+    __application = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'application'), 'application', '__AbsentNamespace0_PeerType_application', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 30, 16), )
+
+    
+    application = property(__application.value, __application.set, None, None)
+
+    
+    # Element parameters uses Python identifier parameters
+    __parameters = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'parameters'), 'parameters', '__AbsentNamespace0_PeerType_parameters', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 31, 16), )
+
+    
+    parameters = property(__parameters.value, __parameters.set, None, None)
+
+    _ElementMap.update({
+        __application.name() : __application,
+        __parameters.name() : __parameters
+    })
+    _AttributeMap.update({
+        
+    })
+Namespace.addCategoryObject('typeBinding', 'PeerType', PeerType)
 
 
 # Complex type ParameterList with content type ELEMENT_ONLY
@@ -215,13 +278,13 @@ class ParameterList (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'ParameterList')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 22, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 35, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
     # Element parameter uses Python identifier parameter
-    __parameter = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'parameter'), 'parameter', '__AbsentNamespace0_ParameterList_parameter', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 24, 16), )
+    __parameter = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'parameter'), 'parameter', '__AbsentNamespace0_ParameterList_parameter', True, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 37, 16), )
 
     
     parameter = property(__parameter.value, __parameter.set, None, None)
@@ -242,15 +305,15 @@ class ParameterType (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_MIXED
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'ParameterType')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 29, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 41, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
     # Attribute name uses Python identifier name
     __name = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, 'name'), 'name', '__AbsentNamespace0_ParameterType_name', pyxb.binding.datatypes.string, required=True)
-    __name._DeclarationLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 30, 12)
-    __name._UseLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 30, 12)
+    __name._DeclarationLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 42, 12)
+    __name._UseLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 42, 12)
     
     name = property(__name.value, __name.set, None, None)
 
@@ -270,20 +333,20 @@ class Observer (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'Observer')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 34, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 60, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
     # Element type uses Python identifier type
-    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_Observer_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 36, 14), )
+    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_Observer_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 62, 14), )
 
     
     type = property(__type.value, __type.set, None, None)
 
     
     # Element property uses Python identifier property_
-    __property = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'property'), 'property_', '__AbsentNamespace0_Observer_property', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 37, 12), )
+    __property = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'property'), 'property_', '__AbsentNamespace0_Observer_property', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 63, 12), )
 
     
     property_ = property(__property.value, __property.set, None, None)
@@ -305,20 +368,20 @@ class Setter (pyxb.binding.basis.complexTypeDefinition):
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
     _Abstract = False
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, 'Setter')
-    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 41, 8)
+    _XSDLocation = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 67, 8)
     _ElementMap = {}
     _AttributeMap = {}
     # Base type is pyxb.binding.datatypes.anyType
     
     # Element type uses Python identifier type
-    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_Setter_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 43, 14), )
+    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'type'), 'type', '__AbsentNamespace0_Setter_type', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 69, 14), )
 
     
     type = property(__type.value, __type.set, None, None)
 
     
     # Element property uses Python identifier property_
-    __property = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'property'), 'property_', '__AbsentNamespace0_Setter_property', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 44, 14), )
+    __property = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, 'property'), 'property_', '__AbsentNamespace0_Setter_property', False, pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 70, 14), )
 
     
     property_ = property(__property.value, __property.set, None, None)
@@ -333,12 +396,14 @@ class Setter (pyxb.binding.basis.complexTypeDefinition):
 Namespace.addCategoryObject('typeBinding', 'Setter', Setter)
 
 
-Root = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, 'Root'), RootElement, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 4, 4))
+Root = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, 'Root'), RootElement, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 4, 4))
 Namespace.addCategoryObject('elementBinding', Root.name().localName(), Root)
 
 
 
-RootElement._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'Device'), DeviceType, scope=RootElement, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 8, 16)))
+RootElement._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'Applications'), ApplicationType, scope=RootElement, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 8, 16)))
+
+RootElement._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'Device'), DeviceType, scope=RootElement, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 9, 16)))
 
 def _BuildAutomaton ():
     # Remove this helper function from the namespace after it is invoked
@@ -347,49 +412,63 @@ def _BuildAutomaton ():
     import pyxb.utils.fac as fac
 
     counters = set()
-    cc_0 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 8, 16))
+    cc_0 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 9, 16))
     counters.add(cc_0)
     states = []
     final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(RootElement._UseForTag(pyxb.namespace.ExpandedName(None, 'Device')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 8, 16))
+    symbol = pyxb.binding.content.ElementUse(RootElement._UseForTag(pyxb.namespace.ExpandedName(None, 'Applications')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 8, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
+    final_update = set()
+    final_update.add(fac.UpdateInstruction(cc_0, False))
+    symbol = pyxb.binding.content.ElementUse(RootElement._UseForTag(pyxb.namespace.ExpandedName(None, 'Device')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 9, 16))
+    st_1 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
+    states.append(st_1)
     transitions = []
     transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
+         ]))
+    transitions.append(fac.Transition(st_1, [
+         ]))
     st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
+    transitions = []
+    transitions.append(fac.Transition(st_1, [
+        fac.UpdateInstruction(cc_0, True) ]))
+    st_1._set_transitionSet(transitions)
+    return fac.Automaton(states, counters, False, containing_state=None)
 RootElement._Automaton = _BuildAutomaton()
 
 
 
 
-DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'portname'), pyxb.binding.datatypes.string, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 14, 16)))
+ApplicationType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'name'), pyxb.binding.datatypes.string, scope=ApplicationType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 15, 16)))
 
-DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), ModelType, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 15, 16)))
-
-DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'parameters'), ParameterList, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 16, 16)))
-
-DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'observer'), Observer, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 17, 16)))
-
-DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'setter'), Setter, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 18, 16)))
-
-def _BuildAutomaton_2 ():
+def _BuildAutomaton_ ():
     # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_2
-    del _BuildAutomaton_2
+    global _BuildAutomaton_
+    del _BuildAutomaton_
     import pyxb.utils.fac as fac
 
     counters = set()
     states = []
     final_update = set()
-    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'portname')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 14, 16))
+    symbol = pyxb.binding.content.ElementUse(ApplicationType._UseForTag(pyxb.namespace.ExpandedName(None, 'name')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 15, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     transitions = []
     st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, False, containing_state=st_0)
+    return fac.Automaton(states, counters, False, containing_state=None)
+ApplicationType._Automaton = _BuildAutomaton_()
+
+
+
+
+DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'portname'), pyxb.binding.datatypes.string, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 21, 16)))
+
+DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), ModelType, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 22, 16)))
+
+DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'from'), PeerType, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 23, 16)))
+
+DeviceType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'to'), PeerType, scope=DeviceType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 24, 16)))
 
 def _BuildAutomaton_3 ():
     # Remove this helper function from the namespace after it is invoked
@@ -400,7 +479,7 @@ def _BuildAutomaton_3 ():
     counters = set()
     states = []
     final_update = set()
-    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 15, 16))
+    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'portname')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 21, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     transitions = []
@@ -414,19 +493,14 @@ def _BuildAutomaton_4 ():
     import pyxb.utils.fac as fac
 
     counters = set()
-    cc_0 = fac.CounterCondition(min=0, max=1, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 16, 16))
-    counters.add(cc_0)
     states = []
     final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'parameters')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 16, 16))
+    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 22, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
     st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=st_0)
+    return fac.Automaton(states, counters, False, containing_state=st_0)
 
 def _BuildAutomaton_5 ():
     # Remove this helper function from the namespace after it is invoked
@@ -435,19 +509,14 @@ def _BuildAutomaton_5 ():
     import pyxb.utils.fac as fac
 
     counters = set()
-    cc_0 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 17, 16))
-    counters.add(cc_0)
     states = []
     final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'observer')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 17, 16))
+    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'from')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 23, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
     st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=st_0)
+    return fac.Automaton(states, counters, False, containing_state=st_0)
 
 def _BuildAutomaton_6 ():
     # Remove this helper function from the namespace after it is invoked
@@ -456,54 +525,46 @@ def _BuildAutomaton_6 ():
     import pyxb.utils.fac as fac
 
     counters = set()
-    cc_0 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 18, 16))
-    counters.add(cc_0)
     states = []
     final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'setter')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 18, 16))
+    symbol = pyxb.binding.content.ElementUse(DeviceType._UseForTag(pyxb.namespace.ExpandedName(None, 'to')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 24, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     transitions = []
     transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
+         ]))
     st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=st_0)
+    return fac.Automaton(states, counters, False, containing_state=st_0)
 
-def _BuildAutomaton_ ():
+def _BuildAutomaton_2 ():
     # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_
-    del _BuildAutomaton_
+    global _BuildAutomaton_2
+    del _BuildAutomaton_2
     import pyxb.utils.fac as fac
 
     counters = set()
-    cc_0 = fac.CounterCondition(min=0, max=1, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 16, 16))
-    counters.add(cc_0)
-    cc_1 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 17, 16))
-    counters.add(cc_1)
-    cc_2 = fac.CounterCondition(min=0, max=None, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 18, 16))
-    counters.add(cc_2)
     states = []
     sub_automata = []
-    sub_automata.append(_BuildAutomaton_2())
     sub_automata.append(_BuildAutomaton_3())
     sub_automata.append(_BuildAutomaton_4())
     sub_automata.append(_BuildAutomaton_5())
     sub_automata.append(_BuildAutomaton_6())
     final_update = set()
-    symbol = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 13, 12)
+    symbol = pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 20, 12)
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=True)
     st_0._set_subAutomata(*sub_automata)
     states.append(st_0)
     transitions = []
     st_0._set_transitionSet(transitions)
     return fac.Automaton(states, counters, False, containing_state=None)
-DeviceType._Automaton = _BuildAutomaton_()
+DeviceType._Automaton = _BuildAutomaton_2()
 
 
 
 
-ParameterList._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'parameter'), ParameterType, scope=ParameterList, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 24, 16)))
+PeerType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'application'), pyxb.binding.datatypes.string, scope=PeerType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 30, 16)))
+
+PeerType._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'parameters'), ParameterList, scope=PeerType, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 31, 16)))
 
 def _BuildAutomaton_7 ():
     # Remove this helper function from the namespace after it is invoked
@@ -512,20 +573,33 @@ def _BuildAutomaton_7 ():
     import pyxb.utils.fac as fac
 
     counters = set()
+    cc_0 = fac.CounterCondition(min=0, max=1, metadata=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 31, 16))
+    counters.add(cc_0)
     states = []
     final_update = set()
-    symbol = pyxb.binding.content.ElementUse(ParameterList._UseForTag(pyxb.namespace.ExpandedName(None, 'parameter')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 24, 16))
+    symbol = pyxb.binding.content.ElementUse(PeerType._UseForTag(pyxb.namespace.ExpandedName(None, 'application')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 30, 16))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
+    final_update = set()
+    final_update.add(fac.UpdateInstruction(cc_0, False))
+    symbol = pyxb.binding.content.ElementUse(PeerType._UseForTag(pyxb.namespace.ExpandedName(None, 'parameters')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 31, 16))
+    st_1 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
+    states.append(st_1)
     transitions = []
-    transitions.append(fac.Transition(st_0, [
+    transitions.append(fac.Transition(st_1, [
          ]))
     st_0._set_transitionSet(transitions)
+    transitions = []
+    transitions.append(fac.Transition(st_1, [
+        fac.UpdateInstruction(cc_0, True) ]))
+    st_1._set_transitionSet(transitions)
     return fac.Automaton(states, counters, False, containing_state=None)
-ParameterList._Automaton = _BuildAutomaton_7()
+PeerType._Automaton = _BuildAutomaton_7()
 
 
 
+
+ParameterList._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'parameter'), ParameterType, scope=ParameterList, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 37, 16)))
 
 def _BuildAutomaton_8 ():
     # Remove this helper function from the namespace after it is invoked
@@ -535,15 +609,19 @@ def _BuildAutomaton_8 ():
 
     counters = set()
     states = []
-    return fac.Automaton(states, counters, True, containing_state=None)
-ParameterType._Automaton = _BuildAutomaton_8()
+    final_update = set()
+    symbol = pyxb.binding.content.ElementUse(ParameterList._UseForTag(pyxb.namespace.ExpandedName(None, 'parameter')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 37, 16))
+    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
+    states.append(st_0)
+    transitions = []
+    transitions.append(fac.Transition(st_0, [
+         ]))
+    st_0._set_transitionSet(transitions)
+    return fac.Automaton(states, counters, False, containing_state=None)
+ParameterList._Automaton = _BuildAutomaton_8()
 
 
 
-
-Observer._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), MusicOutPortType, scope=Observer, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 36, 14)))
-
-Observer._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'property'), pyxb.binding.datatypes.string, scope=Observer, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 37, 12)))
 
 def _BuildAutomaton_9 ():
     # Remove this helper function from the namespace after it is invoked
@@ -553,29 +631,15 @@ def _BuildAutomaton_9 ():
 
     counters = set()
     states = []
-    final_update = None
-    symbol = pyxb.binding.content.ElementUse(Observer._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 36, 14))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    final_update = set()
-    symbol = pyxb.binding.content.ElementUse(Observer._UseForTag(pyxb.namespace.ExpandedName(None, 'property')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 37, 12))
-    st_1 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_1)
-    transitions = []
-    transitions.append(fac.Transition(st_1, [
-         ]))
-    st_0._set_transitionSet(transitions)
-    transitions = []
-    st_1._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, False, containing_state=None)
-Observer._Automaton = _BuildAutomaton_9()
+    return fac.Automaton(states, counters, True, containing_state=None)
+ParameterType._Automaton = _BuildAutomaton_9()
 
 
 
 
-Setter._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), MusicInPortType, scope=Setter, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 43, 14)))
+Observer._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), MusicOutPortType, scope=Observer, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 62, 14)))
 
-Setter._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'property'), pyxb.binding.datatypes.string, scope=Setter, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 44, 14)))
+Observer._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'property'), pyxb.binding.datatypes.string, scope=Observer, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 63, 12)))
 
 def _BuildAutomaton_10 ():
     # Remove this helper function from the namespace after it is invoked
@@ -586,11 +650,11 @@ def _BuildAutomaton_10 ():
     counters = set()
     states = []
     final_update = None
-    symbol = pyxb.binding.content.ElementUse(Setter._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 43, 14))
+    symbol = pyxb.binding.content.ElementUse(Observer._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 62, 14))
     st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
     states.append(st_0)
     final_update = set()
-    symbol = pyxb.binding.content.ElementUse(Setter._UseForTag(pyxb.namespace.ExpandedName(None, 'property')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_nest/common/xml_config/music.xsd', 44, 14))
+    symbol = pyxb.binding.content.ElementUse(Observer._UseForTag(pyxb.namespace.ExpandedName(None, 'property')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 63, 12))
     st_1 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
     states.append(st_1)
     transitions = []
@@ -600,5 +664,37 @@ def _BuildAutomaton_10 ():
     transitions = []
     st_1._set_transitionSet(transitions)
     return fac.Automaton(states, counters, False, containing_state=None)
-Setter._Automaton = _BuildAutomaton_10()
+Observer._Automaton = _BuildAutomaton_10()
+
+
+
+
+Setter._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'type'), MusicInPortType, scope=Setter, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 69, 14)))
+
+Setter._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, 'property'), pyxb.binding.datatypes.string, scope=Setter, location=pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 70, 14)))
+
+def _BuildAutomaton_11 ():
+    # Remove this helper function from the namespace after it is invoked
+    global _BuildAutomaton_11
+    del _BuildAutomaton_11
+    import pyxb.utils.fac as fac
+
+    counters = set()
+    states = []
+    final_update = None
+    symbol = pyxb.binding.content.ElementUse(Setter._UseForTag(pyxb.namespace.ExpandedName(None, 'type')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 69, 14))
+    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
+    states.append(st_0)
+    final_update = set()
+    symbol = pyxb.binding.content.ElementUse(Setter._UseForTag(pyxb.namespace.ExpandedName(None, 'property')), pyxb.utils.utility.Location('/disk/no_backup/schulze/NRP_32/music_wizard/common/xml_config/music.xsd', 70, 14))
+    st_1 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
+    states.append(st_1)
+    transitions = []
+    transitions.append(fac.Transition(st_1, [
+         ]))
+    st_0._set_transitionSet(transitions)
+    transitions = []
+    st_1._set_transitionSet(transitions)
+    return fac.Automaton(states, counters, False, containing_state=None)
+Setter._Automaton = _BuildAutomaton_11()
 
