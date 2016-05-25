@@ -1,7 +1,11 @@
 import abc
 
-class Connector(object):
+class AbstractConnector(object):
     __metaclass__ = abc.ABCMeta
+
+    @abc.abstractmethod
+    def connect(self, target, *args, **kwargs):
+        pass
 
 class Port(object):
     __metaclass__ = abc.ABCMeta

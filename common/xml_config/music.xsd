@@ -5,7 +5,6 @@
 
         <xs:complexType name="RootElement">
             <xs:sequence>
-                <xs:element name="Applications" type="ApplicationType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element name="Device" type="DeviceType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -20,14 +19,24 @@
             <xs:all>
                 <xs:element name="portname" type="xs:string"/>
                 <xs:element name="type" type="ModelType"/>
+                <xs:element name="connector" type="ConnectorType"/>
+                <xs:element name="width" type="xs:integer"/>
                 <xs:element name="from" type="PeerType" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="to" type="PeerType" minOccurs="1" maxOccurs="unbounded"/>
             </xs:all>
         </xs:complexType>
 
+        <xs:simpleType name="ConnectorType">
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="RPC"/>
+                <xs:enumeration value="Static"/>
+            </xs:restriction>
+        </xs:simpleType>
+
         <xs:complexType name="PeerType">
             <xs:sequence>
-                <xs:element name="application" type="xs:string"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="target" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>

@@ -1,13 +1,17 @@
 from music_nest.common.xml_config import music_xml
 from collections import OrderedDict
+from collections import namedtuple
 
 
-def create_devices_from_xml(xml_text, device_factory):
+
+def create_devices_from_xml(xml_text, application_name, device_factory):
     root = music_xml.CreateFromDocument(xml_text)
     xml_devices = root.Device 
     devices = OrderedDict()
     for xml_device in xml_devices:
-        devices[xml_device.portname] = device_factory(xml_device)
+        device = device_factory(xml_device, application_name)
+        if device:
+            devices[xml_device.portname] = device
 
     return devices
 
