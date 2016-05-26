@@ -1,5 +1,5 @@
 from collections import namedtuple
-from collections import dequeue
+from collections import deque
 import msgpack
 
 apply_fmt = namedtuple("rpc_msg", ['func_name', 'args', 'kwargs'])
@@ -20,5 +20,5 @@ def decode_message(encoded_msg):
     msg = msgpack.unpackb(encoded_msg)
     return apply_fmt(*msg)
 
-class MessageQueue(dequeue):
+class MessageQueue(deque):
     pass

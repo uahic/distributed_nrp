@@ -1,5 +1,4 @@
 from music_wizard.common.Interfaces import AbstractConnector
-from music_wizard.pymusic.Ports import RPCInPort, RPCOutPort 
 from music_wizard.nest.__populations import population_register
 
 def connect_to_pynn_population(port, pop_name):
@@ -9,7 +8,13 @@ def connect_to_pynn_population(port, pop_name):
 
 class StaticConnector(AbstractConnector):
 
+    def __init__(self):
+        self.connector_fcn = connect_to_pynn_population
+
     def connect(self, port, pop_name):
-        connect_to_pynn_population(port, pop_name)
+        self.connector_fcn(port, pop_name)
+
+    def set_connector_fcn(self, connector_fcn):
+        self.connector_fcn = connector_fcn
 
 

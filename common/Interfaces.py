@@ -10,10 +10,14 @@ class AbstractConnector(object):
     def connect(self, target, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
+    def set_connector_fcn(self, connector_fcn):
+        pass
+
 class Port(object):
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         super(Port, self).__init__(*args, **kwargs)
 
     @abc.abstractmethod
@@ -29,7 +33,7 @@ class DeviceMeta(abc.ABCMeta):
         newclass = type.__new__(cls, clsname, bases, attrs)
         if clsname in DeviceMeta._device_classes:
             raise TypeError("Device {} has already been defined.".format(clsname))
-        DeviceMeta._device_classes[clsname] = newclass 
+        DeviceMeta._device_classes[clsname] = newclass
         return newclass
 
     def __call__(self, *args, **kwargs):

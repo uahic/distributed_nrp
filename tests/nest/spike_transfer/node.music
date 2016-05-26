@@ -1,5 +1,5 @@
 timestep=20.0
-xml=/home/fzi/schulze_account/Workspace/music_wizard/tests/nest/spike_transfer/music.xml
+xml=/home/packages/music_wizard/tests/nest/spike_transfer/music.xml
 
 [app1]
   np=1

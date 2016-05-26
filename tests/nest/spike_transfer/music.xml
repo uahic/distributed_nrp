@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Root>
     <Connection>
-        <type>Event</type>
+        <type>Continuous</type>
         <portname>spikes1</portname>
         <connector>RPC</connector>
         <width>2</width>
@@ -25,6 +25,4 @@
             <name>app1</name>
         </receiver>
     </Connection>
-
 </Root>
-

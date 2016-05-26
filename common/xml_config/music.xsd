@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
     <xs:element name="Root" type="RootElement"/>
-
         <xs:complexType name="RootElement">
             <xs:sequence>
                 <xs:element name="Connection" type="ConnectionType" minOccurs="0" maxOccurs="unbounded"/>
@@ -10,14 +8,14 @@
         </xs:complexType>
 
         <xs:complexType name="ConnectionType">
-            <xs:all>
-                <xs:element name="portname" type="xs:string"/>
+            <xs:sequence>
                 <xs:element name="type" type="PortType"/>
+                <xs:element name="portname" type="xs:string"/>
                 <xs:element name="connector" type="TargetConnectorType"/>
                 <xs:element name="width" type="xs:integer"/>
                 <xs:element name="sender" type="PeerType" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="receiver" type="PeerType" minOccurs="1" maxOccurs="unbounded"/>
-            </xs:all>
+            </xs:sequence>
         </xs:complexType>
 
         <xs:simpleType name="TargetConnectorType">

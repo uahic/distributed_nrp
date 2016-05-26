@@ -37,7 +37,7 @@ class RPCInPort(PyMusicPort):
             instance.apply_messages()
 
     def __init__(self, music_setup, port_name, accLatency, maxBuffered=-1, *args, **kwargs):
-        super(RPCPort, self).__init__(*args, **kwargs)
+        super(RPCInPort, self).__init__(*args, **kwargs)
         self._callbacks = {}
         self._queue = MessageQueue()
 
