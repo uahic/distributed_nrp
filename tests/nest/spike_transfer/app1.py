@@ -13,11 +13,12 @@ def callback(t, msg):
 
 xml = music_setup.config('xml')
 
-with open(xml, 'r') as xml_text:
-    connections = create_connections_from_xml(xml_text.read(), "app1")
+def connect_to_pynn_population(port, pop_name):
+    pass
 
-for connection in connections:
-    print connection.port
+with open(xml, 'r') as xml_text:
+    connections = create_connections_from_xml(xml_text.read(), "app1",
+                                              connect_to_pynn_population)
 
 connected = False
 import math

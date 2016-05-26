@@ -3,7 +3,7 @@
     <Connection>
         <type>Continuous</type>
         <portname>spikes1</portname>
-        <connector>RPC</connector>
+        <connector>Static</connector>
         <width>2</width>
         <sender>
             <name>app1</name>

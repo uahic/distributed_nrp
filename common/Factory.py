@@ -26,18 +26,26 @@ def make_connection(xml_connection, application_name, connector_factory, port_fa
     receiver_list = xml_connection.receiver
 
     if sender.name == application_name:
+        if sender.target:
+            target = sender.target[0]
+        else:
+            target = None
         kwargs = extract_kwargs(sender.parameters)
         port = port_factory(port_name, port_type, width, True)
-        connector = connector_factory(connector_type, port, port_name, sender.target, True)
+        connector = connector_factory(connector_type, port, port_name, target, True)
         return Connection(port, connector)
     else:
         for receiver in list(receiver_list):
             if receiver.name == application_name:
+                if receiver.target:
+                    target = receiver.target[0]
+                else:
+                    target = None
                 kwargs = extract_kwargs(receiver.parameters)
                 port = port_factory(port_name, port_type, width, False)
-                connector = connector_factory(connector_type, port, port_name, receiver.target, False)
+                connector = connector_factory(connector_type, port, port_name, target, False)
                 return Connection(port, connector)
-    return None 
+    return None
 
 def create_connections_from_xml(xml_text, application_name, connector_factory, port_factory):
     root = music_xml.CreateFromDocument(xml_text)

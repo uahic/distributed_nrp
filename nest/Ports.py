@@ -9,15 +9,20 @@ class ContOutputPort(Port):
 
     def __init__(self, port_name, record_from=["V_m"], interval=0.1):
         self.port = nest.Create('music_cont_out_proxy')
+        nest.SetStatus(self.port, {'port_name':port_name,
+                                   'record_from': record_from,
+                                   'interval': interval})
         self.port_name = port_name
         self.record_from = record_from
         self.interval = interval
 
     def connect(self, global_ids):
-        nest.SetStatus(self.port, { 'port_name': self.port_name,
-                                   'record_from': self.record_from,
-                    'interval': self.interval,
-                    'target_gids': global_ids })
+        if nest.GetStatus(self.port, 'published'):
+            raise Exception("The NEST implementation of continuous output \
+                            port does not support connect() after the \
+                            simulation has been started!")
+
+        nest.SetStatus(self.port, {'target_gids': global_ids})
 
 class ContInputPort(Port):
 
