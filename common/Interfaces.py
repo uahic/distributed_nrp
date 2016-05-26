@@ -1,5 +1,8 @@
 import abc
 
+class AbstractConnection(object):
+    pass
+
 class AbstractConnector(object):
     __metaclass__ = abc.ABCMeta
 

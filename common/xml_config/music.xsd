@@ -5,28 +5,22 @@
 
         <xs:complexType name="RootElement">
             <xs:sequence>
-                <xs:element name="Device" type="DeviceType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Connection" type="ConnectionType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
 
-        <xs:complexType name="ApplicationType">
-            <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-
-        <xs:complexType name="DeviceType">
+        <xs:complexType name="ConnectionType">
             <xs:all>
                 <xs:element name="portname" type="xs:string"/>
-                <xs:element name="type" type="ModelType"/>
-                <xs:element name="connector" type="ConnectorType"/>
+                <xs:element name="type" type="PortType"/>
+                <xs:element name="connector" type="TargetConnectorType"/>
                 <xs:element name="width" type="xs:integer"/>
-                <xs:element name="from" type="PeerType" minOccurs="1" maxOccurs="1"/>
-                <xs:element name="to" type="PeerType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="sender" type="PeerType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="receiver" type="PeerType" minOccurs="1" maxOccurs="unbounded"/>
             </xs:all>
         </xs:complexType>
 
-        <xs:simpleType name="ConnectorType">
+        <xs:simpleType name="TargetConnectorType">
             <xs:restriction base="xs:string">
                 <xs:enumeration value="RPC"/>
                 <xs:enumeration value="Static"/>
@@ -51,48 +45,11 @@
             <xs:attribute name="name" type="xs:string" use="required"/>
         </xs:complexType>
 
-        <xs:simpleType name="ModelType">
+        <xs:simpleType name="PortType">
             <xs:restriction base="xs:string">
-                <xs:enumeration value="ACSource"/>
-                <xs:enumeration value="DCSource"/>
-                <xs:enumeration value="FixedFrequency"/>
-                <xs:enumeration value="LeakyIntegratorAlpha"/>
-                <xs:enumeration value="LeakyIntegratorExp"/>
-                <xs:enumeration value="NCSource"/>
-                <xs:enumeration value="Poisson"/>
-                <xs:enumeration value="SpikeRecorder"/>
-                <xs:enumeration value="ContinuousRecorder"/>
-                <xs:enumeration value="PopulationRate"/>
+                <xs:enumeration value="Event"/>
+                <xs:enumeration value="Continuous"/>
+                <xs:enumeration value="Message"/>
             </xs:restriction>
         </xs:simpleType>
-
-        <xs:complexType name="Observer">
-          <xs:sequence>
-              <xs:element name="type" type="MusicOutPortType"/>
-            <xs:element name="property" type="xs:string"/>
-          </xs:sequence>
-        </xs:complexType>
-
-        <xs:complexType name="Setter">
-          <xs:sequence>
-              <xs:element name="type" type="MusicInPortType"/>
-              <xs:element name="property" type="xs:string"/>
-          </xs:sequence>
-        </xs:complexType>
-
-
-        <xs:simpleType name="MusicInPortType">
-            <xs:restriction base="xs:string">
-                <xs:enumeration value="Cont"/>
-                <xs:enumeration value="Msg"/>
-            </xs:restriction>
-        </xs:simpleType>
-
-        <xs:simpleType name="MusicOutPortType">
-            <xs:restriction base="xs:string">
-                <xs:enumeration value="Cont"/>
-                <xs:enumeration value="Msg"/>
-            </xs:restriction>
-        </xs:simpleType>
-
 </xs:schema>

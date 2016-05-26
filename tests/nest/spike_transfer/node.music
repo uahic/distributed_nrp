@@ -1,0 +1,15 @@
+timestep=20.0
+xml=/home/fzi/schulze_account/Workspace/music_wizard/tests/nest/spike_transfer/music.xml
+
+[app1]
+  np=1
+  binary=./app1.py
+
+[app2]
+  np=1
+  binary=./app2.py
+
+app1.spikes1 -> app2.spikes1[2]
+app2.spikes2 -> app1.spikes2[1]
+
+

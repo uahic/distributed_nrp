@@ -5,12 +5,9 @@ from music_wizard.common.Interfaces import Port
 if sys.version_info.major > 2:
     from past.builtins import xrange
 
-class MusicToNestIndexMap(dict):
-    pass 
-
 class ContOutputPort(Port):
 
-    def __init__(self, port_name, record_from, interval):
+    def __init__(self, port_name, record_from=["V_m"], interval=0.1):
         self.port = nest.Create('music_cont_out_proxy')    
         self.port_name = port_name
         self.record_from = record_from
@@ -20,6 +17,18 @@ class ContOutputPort(Port):
         nest.SetStatus(self.port, { 'port_name': self.port_name, 'record_from': self.record_from,
                     'interval': self.interval,
                     'target_gids': global_ids })
+
+class ContInputPort(Port):
+
+    def __init__(self, port_name, **params):
+        self.port = nest.Create('music_cont_in_proxy')
+        self.port_name = port_name
+        nest.SetStatus(self.port, {'port_name':self.port_name})
+
+    def connect(self, global_ids):
+        raise Exception("The music_cont_in_proxy model can not be connected to other neurons. 
+                The value must be read out via the dictionary.")
+
 
 class EventOutputPort(Port):
     

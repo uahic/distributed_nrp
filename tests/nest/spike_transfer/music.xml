@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Root>
+    <Connection>
+        <type>Event</type>
+        <portname>spikes1</portname>
+        <connector>RPC</connector>
+        <width>2</width>
+        <sender>
+            <name>app1</name>
+        </sender>
+        <receiver>
+            <name>app2</name>
+            <target>pop1</target>
+        </receiver>
+    </Connection>
+    <Connection>
+        <type>Event</type>
+        <portname>spikes2</portname>
+        <connector>Static</connector>
+        <width>1</width>
+        <sender>
+            <name>app2</name>
+        </sender>
+        <receiver>
+            <name>app1</name>
+        </receiver>
+    </Connection>
+
+</Root>
+
