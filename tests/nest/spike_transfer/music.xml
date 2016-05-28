@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Root>
     <Connection>
-        <type>Continuous</type>
+        <type>Event</type>
         <portname>spikes1</portname>
         <connector>Static</connector>
         <width>2</width>

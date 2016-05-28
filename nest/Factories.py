@@ -11,7 +11,8 @@ from music_wizard.common import Factory
 
 output_port_map = {'Event': EventOutputPort, 'Continuous': ContOutputPort }
 input_port_map = {'Event': EventInputPort, 'Continuous': ContInputPort}
-static_connector = StaticConnector()
+port_connector_blacklist = {'RPC': [ContInputPort, ContOutputPort]}
+default_connector_fcn = None
 
 
 def create_rpc_port(port_name, is_output_device):
@@ -35,27 +36,37 @@ def create_port(port_name, port_type_name, width, is_output_device, **params):
         port = port_cls(port_name, **params)
     return port
 
+def check_connector_port_validity(connector_type_name, port):
+    class Dummy(object):
+        pass
+    bool_list = map(lambda cls: isinstance(port, cls), port_connector_blacklist.get(connector_type_name, [Dummy]))
+    if any(bool_list):
+        raise Exception('Connector type {} is not supported for the Port type\
+                        {} in NEST'.format(connector_type_name, type(port)))
+
 def create_connector(connector_type_name, port, port_name, target, \
                      is_output_device):
+    global default_connector_fcn
+    check_connector_port_validity(connector_type_name, port)
     if connector_type_name == 'RPC':
         if is_output_device:
             rpc_port = create_rpc_port(port_name, is_output_device)
             connector = RPCOutConnector(rpc_port)
-            connector.set_connector_fcn(static_connector.connect)
+            connector.set_connector_fcn(default_connector_fcn)
         else:
             rpc_port = create_rpc_port(port_name, is_output_device)
             connector = RPCInConnector(port, rpc_port)
-            connector.set_connector_fcn(static_connector.connect)
+            connector.set_connector_fcn(default_connector_fcn)
     else:
-        connector = StaticConnector()
-        connector.set_connector_fcn(static_connector.connect)
+        connector = StaticConnector(default_connector_fcn)
         if target:
             connector.connect(port, target)
     return connector
 
 
 def create_connections_from_xml(xml_text, application_name, connector_fcn):
-    static_connector.set_connector_fcn(connector_fcn)
+    global default_connector_fcn
+    default_connector_fcn = connector_fcn
     connection_dict = Factory.create_connections_from_xml(xml_text, application_name,\
                                                   create_connector, \
                                                   create_port)

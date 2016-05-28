@@ -32,7 +32,7 @@ class ContInputPort(Port):
         nest.SetStatus(self.port, {'port_name':self.port_name})
 
     def connect(self, global_ids):
-        raise Exception("connect() is not available for NESt implementation")
+        pass
 
 
 class EventOutputPort(Port):
@@ -79,6 +79,10 @@ class EventInputPort(Port):
     def connect(self, global_ids, *args, **params):
         if not args:
             args = ['one_to_one']
+            if len(global_ids) != self.width:
+                raise Exception('The number of target GIDs must either match\
+                                the width of the EventInputPort or pass the \
+                                connection rule "all_to_all" as argument.')
         if self.parrots:
             nest.Connect(self.parrots, global_ids, *args, **params)
         else:

@@ -28,10 +28,18 @@
         <xs:complexType name="PeerType">
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
-                <xs:element name="target" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="connection" type="SynapticConnectionType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
+
+		<xs:complexType name="SynapticConnectionType">
+			<xs:sequence>
+                <xs:element name="target" type="xs:string"/>
+				<xs:element name="args" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
 
         <xs:complexType name="ParameterList">
             <xs:sequence>
