@@ -13,6 +13,7 @@ def callback(t, msg):
 
 xml = music_setup.config('xml')
 
+
 def connect_to_pynn_population(port, pop_name):
     if not pop_name:
 	return 

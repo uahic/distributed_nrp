@@ -14,7 +14,8 @@ def callback(t, msg):
 xml = music_setup.config('xml')
 
 def connect_to_pynn_population(port, pop_name):
-    pass
+    print "Connect request for port {} and pop name {}".format(port, pop_name)
+    raise
 
 with open(xml, 'r') as xml_text:
     connections = create_connections_from_xml(xml_text.read(), "app1",
@@ -27,8 +28,6 @@ i = 0.0
 while i < 2000.0:
     nest.Simulate(20)
 
-    if i > 0.02:
-        connections.connector
         #spike_recorder.connect(runtime.time(), 'pop1')
         #poi_rpc.apply(runtime.time(), 'connect', 'pop1')
     i += 0.01

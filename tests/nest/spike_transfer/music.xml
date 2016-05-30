@@ -2,27 +2,22 @@
 <Root>
     <Connection>
         <type>Event</type>
-        <portname>spikes1</portname>
-        <connector>Static</connector>
-        <width>2</width>
-        <sender>
-            <name>app1</name>
-        </sender>
-        <receiver>
-            <name>app2</name>
-            <target>pop1</target>
-        </receiver>
-    </Connection>
-    <Connection>
-        <type>Event</type>
         <portname>spikes2</portname>
         <connector>Static</connector>
         <width>1</width>
         <sender>
             <name>app2</name>
+			<synapse>
+				<target>pop1</target>
+				<rule>all_to_all</rule>
+			</synapse>
         </sender>
         <receiver>
             <name>app1</name>
+			<synapse>
+				<target>deimudda</target>
+				<rule>all_to_all</rule>
+			</synapse>
         </receiver>
     </Connection>
 </Root>

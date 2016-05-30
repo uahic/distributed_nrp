@@ -7,7 +7,7 @@ if sys.version_info.major > 2:
 
 class ContOutputPort(Port):
 
-    def __init__(self, port_name, record_from=["V_m"], interval=0.1):
+    def __init__(self, port_name, record_from=["V_m"], interval=0.1, **kwargs):
         self.port = nest.Create('music_cont_out_proxy')
         nest.SetStatus(self.port, {'port_name':port_name,
                                    'record_from': record_from,
@@ -26,10 +26,11 @@ class ContOutputPort(Port):
 
 class ContInputPort(Port):
 
-    def __init__(self, port_name, **params):
+    def __init__(self, port_name, accLatency=0.01, **kwargs):
         self.port = nest.Create('music_cont_in_proxy')
         self.port_name = port_name
         nest.SetStatus(self.port, {'port_name':self.port_name})
+        nest.SetAcceptableLatency(port_name, accLatency)
 
     def connect(self, global_ids):
         pass
@@ -37,7 +38,7 @@ class ContInputPort(Port):
 
 class EventOutputPort(Port):
 
-    def __init__(self, port_name, width, use_parrots=True):
+    def __init__(self, port_name, width, use_parrots=True, **kwargs):
         self.width = width
         self.parrots = None
         self.port = nest.Create('music_event_out_proxy')
@@ -63,13 +64,15 @@ class EventOutputPort(Port):
 
 class EventInputPort(Port):
 
-    def __init__(self, port_name, width, use_parrots=True):
+    def __init__(self, port_name, width, use_parrots=True, accLatency=0.01, **kwargs):
         self.width = width
         self.ports = nest.Create('music_event_in_proxy', width)
         self.port_name = port_name
         self.parrots = None
         nest.SetStatus(self.ports,
                 {'port_name': "{}".format(self.port_name)})
+        nest.SetAcceptableLatency(port_name, accLatency)
+
         for i in xrange(self.width):
             nest.SetStatus([self.ports[i]], {'music_channel': i})
         if use_parrots:

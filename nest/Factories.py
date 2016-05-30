@@ -16,6 +16,7 @@ default_connector_fcn = None
 
 
 def create_rpc_port(port_name, is_output_device):
+
     if is_output_device:
         rpc_port = RPCOutPort(music_setup, port_name, maxBuffered=1)
     else:
@@ -31,9 +32,9 @@ def create_port(port_name, port_type_name, width, is_output_device, **params):
         port_cls = input_port_map[port_type_name]
 
     if port_type_name == 'Event':
-        port = port_cls(port_name, width)
+        port = port_cls(port_name, width, accLatency=accLatency, **params)
     else:
-        port = port_cls(port_name, **params)
+        port = port_cls(port_name, accLatency=accLatency, **params)
     return port
 
 def check_connector_port_validity(connector_type_name, port):
@@ -44,23 +45,22 @@ def check_connector_port_validity(connector_type_name, port):
         raise Exception('Connector type {} is not supported for the Port type\
                         {} in NEST'.format(connector_type_name, type(port)))
 
-def create_connector(connector_type_name, port, port_name, target, \
+def create_connector(connector_type_name, port, port_name, synapse, \
                      is_output_device):
     global default_connector_fcn
     check_connector_port_validity(connector_type_name, port)
     if connector_type_name == 'RPC':
+        rpc_port = create_rpc_port(port_name, is_output_device)
         if is_output_device:
-            rpc_port = create_rpc_port(port_name, is_output_device)
             connector = RPCOutConnector(rpc_port)
-            connector.set_connector_fcn(default_connector_fcn)
         else:
-            rpc_port = create_rpc_port(port_name, is_output_device)
             connector = RPCInConnector(port, rpc_port)
-            connector.set_connector_fcn(default_connector_fcn)
+        connector.set_connector_fcn(default_connector_fcn)
     else:
         connector = StaticConnector(default_connector_fcn)
-        if target:
-            connector.connect(port, target)
+        if hasattr(synapse, 'target') and synapse.target:
+            print synapse.target
+            connector.connect(port, synapse.target, synapse.rule)
     return connector
 
 

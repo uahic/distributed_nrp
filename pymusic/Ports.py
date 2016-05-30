@@ -64,7 +64,6 @@ class RPCOutPort(PyMusicPort):
     def __init__(self, music_setup, port_name, maxBuffered=1, *args, **kwargs):
         super(RPCOutPort, self).__init__(*args, **kwargs)
         self._music_setup = music_setup
-        self._music_runtime = None
         self.port = MsgOutputPort(music_setup, port_name, maxBuffered=maxBuffered)
 
     def apply(self, time_stamp, func_name, *args, **kwargs):
