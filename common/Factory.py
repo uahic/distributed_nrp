@@ -1,3 +1,4 @@
+import abc
 from collections import OrderedDict
 from collections import namedtuple
 from music_wizard.common.xml_config import music_xml
@@ -8,6 +9,26 @@ class Connection(AbstractConnection):
         self.port = port
         self.connector = connector
 
+class BasePortFactory(object):
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self, in_port_map, out_port_map):
+        self.in_port_map = in_port_map
+        self.out_port_map = in_port_map
+
+    @abc.abstractmethod
+    def create_port(self, port_name, port_type, width, is_output):
+        pass
+
+class BaseConnectorFactory(object):
+    __metaclass__ = abc.ABCMeta
+
+    @abc.abstractmethod
+    def create_connector(self, connector_type, port, port_name, synapses, \
+                     is_output):
+        pass
+
+
 def extract_kwargs(xml_parameter_list):
     if not xml_parameter_list:
         return {}
@@ -15,6 +36,15 @@ def extract_kwargs(xml_parameter_list):
     for elem in xml_parameter_list.orderedContent():
         kwargs[elem.value.name] = elem.value.content()
     return kwargs
+
+def create_selector(selector_type, values):
+    if selector_type == 'slice':
+        return slice(values.start, values.stop, values.step)
+    elif selector_type == 'indice':
+        return [x for x in values]
+    else:
+        raise Exception('Unknown selector type {}'.format(selector_type))
+
 
 def make_connection(xml_connection, application_name, connector_factory, port_factory):
     port_name = xml_connection.portname
@@ -27,17 +57,17 @@ def make_connection(xml_connection, application_name, connector_factory, port_fa
 
     if sender.name == application_name:
         kwargs = extract_kwargs(sender.parameters)
-        port = port_factory(port_name, port_type, width, True)
+        port = port_factory.create_port(port_name, port_type, width, True)
         synapse = getattr(sender, 'synapse', None)
-        connector = connector_factory(connector_type, port, port_name, synapse, True)
+        connector = connector_factory.create_connector(connector_type, port, port_name, synapse, True)
         return Connection(port, connector)
     else:
         for receiver in list(receiver_list):
             if receiver.name == application_name:
-                kwargs = extract_kwargs(receiver.parameters)
-                port = port_factory(port_name, port_type, width, False)
+                wargs = extract_kwargs(receiver.parameters)
+                port = port_factory.create_port(port_name, port_type, width, False)
                 synapse = getattr(receiver, 'synapse', None)
-                connector = connector_factory(connector_type, port, port_name, synapse, False)
+                connector = connector_factory.create_connector(connector_type, port, port_name, synapse, False)
                 return Connection(port, connector)
     return None
 

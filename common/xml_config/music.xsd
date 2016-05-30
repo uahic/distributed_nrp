@@ -37,9 +37,31 @@
 			<xs:sequence>
                 <xs:element name="target" type="xs:string"/>
 				<xs:element name="rule" type="ConnectionRules"/>
+				<xs:element name="selector" type="SynapticSelectorType" minOccurs="0" maxOccurs="1"/>
 				<xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
+
+		<xs:complexType name="SynapticSelectorType">
+			<xs:choice>
+				<xs:element name="slice" type="SliceSelectorType"/>
+				<xs:element name="indice" type="IndiceSelectorType"/>
+			</xs:choice>
+		</xs:complexType>
+
+		<xs:complexType name="SliceSelectorType">
+			<xs:sequence>
+				<xs:element name="start" type="xs:integer"/>
+				<xs:element name="stop" type="xs:integer"/>
+				<xs:element name="step" type="xs:integer"/>
+			</xs:sequence>
+		</xs:complexType>
+
+		<xs:simpleType name="IndiceSelectorType">
+			  <xs:restriction base="xs:token">
+				<xs:pattern value="[1-9][0-9]*(, ?[1-9][0-9]*)*"/>
+			  </xs:restriction>
+		  </xs:simpleType>
 
 		<xs:simpleType name="ConnectionRules">
             <xs:restriction base="xs:string">

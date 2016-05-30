@@ -8,9 +8,9 @@ class RPCInConnector(AbstractConnector):
         self.rpc_port.register_callback('connect', self.connect)
         self.connector_fcn = None
 
-    def connect(self, pop_name):
+    def connect(self, pop_name, connection_rule='all_to_all', selector=None):
         for port in self.ports:
-            self.connector_fcn(port, target)
+            self.connector_fcn(port, target, connection_rule, selector)
 
     def set_connector_fcn(self, connector_fcn):
         self.connector_fcn = connector_fcn
@@ -21,11 +21,11 @@ class RPCOutConnector(AbstractConnector):
         self.rpc_port = rpc_port
         self.connector_fcn = None
 
-    def connect(self, time_stamp, target):
-        self.rpc_port.apply(time_stamp, 'connect', target)
+    def connect(self, time_stamp, target, connection_rule='all_to_all', selector=None):
+        self.rpc_port.apply(time_stamp, 'connect', target, connection_rule=connection_rule, selector=selector)
 
     def set_connector_fcn(self, connector_fcn):
-        self.connector_fcn = connector_fcn
+        pass
 
 
 
