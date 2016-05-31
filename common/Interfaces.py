@@ -7,11 +7,7 @@ class AbstractConnector(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def connect(self, target, *args, **kwargs):
-        pass
-
-    @abc.abstractmethod
-    def set_connector_fcn(self, connector_fcn):
+    def connect(self, target, connection_rule='all_to_all', selector=None, *args, **kwargs):
         pass
 
 class Port(object):

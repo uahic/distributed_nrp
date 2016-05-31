@@ -13,8 +13,8 @@ def callback(t, msg):
 
 xml = music_setup.config('xml')
 
-def connect_to_pynn_population(port, pop_name):
-    print "Connect request for port {} and pop name {}".format(port, pop_name)
+def connect_to_pynn_population(port, pop_name, rule, selector):
+    print "Request", port, pop_name, rule, selector
     raise
 
 with open(xml, 'r') as xml_text:
