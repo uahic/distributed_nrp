@@ -9,7 +9,6 @@ xml=/root/HBP/music_wizard/tests/nest/spike_transfer/music.xml
   np=1
   binary=./app2.py
 
-app1.spikes1 -> app2.spikes1[2]
 app2.spikes2 -> app1.spikes2[1]
 
 

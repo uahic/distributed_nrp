@@ -16,7 +16,6 @@ xml = music_setup.config('xml')
 
 def connector_callback(port, pop_name, rule, selector):
     print "Request", port, pop_name, rule, selector
-    raise
 
 port_factory = NestPortFactory(music_setup)  # def __init__(self, music_setup, acc_latency=10.0, max_buffered=1, use_parrots=True):
 connector_factory = NestConnectorFactory(connector_callback, port_factory) # def __init__(self, connector_callback, port_factory):

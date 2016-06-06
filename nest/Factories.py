@@ -39,6 +39,8 @@ class NestPortFactory(Factory.BasePortFactory):
         else:
             port_cls = self.in_port_map[port_type]
 
+        print "Port Type" , port_cls, " is_output? " , is_output
+
         if port_type == 'Event':
             port = port_cls(port_name, width, accLatency=self.acc_latency, maxBuffered=self.max_buffered )
         else:
@@ -71,7 +73,9 @@ class NestConnectorFactory(Factory.BaseConnectorFactory):
             else:
                 connector = RPCInConnector(port, rpc_port)
             connector.set_connector_fcn(self.connector_callback)
+            
         elif connector_type =='Static':
+
             if synapses:
                 for synapse in synapses:
                     selector = getattr(synapse, 'selector', None)

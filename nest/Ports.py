@@ -51,7 +51,7 @@ class EventOutputPort(Port):
                 nest.Connect([self.parrots[i]], self.port, 'one_to_one',
                              {'music_channel': i})
 
-    def connect(self, global_ids):
+    def connect(self, global_ids, *args, **params):
         if not args:
             args = ['one_to_one']
         if self.parrots:

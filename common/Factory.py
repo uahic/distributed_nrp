@@ -14,7 +14,7 @@ class BasePortFactory(object):
 
     def __init__(self, in_port_map, out_port_map):
         self.in_port_map = in_port_map
-        self.out_port_map = in_port_map
+        self.out_port_map = out_port_map 
 
     @abc.abstractmethod
     def create_port(self, port_name, port_type, width, is_output):
