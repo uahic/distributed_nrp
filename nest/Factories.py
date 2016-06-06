@@ -25,9 +25,9 @@ class NestPortFactory(Factory.BasePortFactory):
 
     def create_rpc_port(self, port_name, is_output):
         if is_output:
-            rpc_port = RPCOutPort(self.music_setup, port_name, self.max_buffered=1)
+            rpc_port = RPCOutPort(self.music_setup, port_name, self.max_buffered)
         else:
-            rpc_port = RPCInPort(self.music_setup, port_name, self.acc_latency, self.max_buffered=1)
+            rpc_port = RPCInPort(self.music_setup, port_name, self.acc_latency, self.max_buffered)
         return rpc_port
 
     def create_port(self, port_name, port_type, width, is_output):
@@ -40,9 +40,9 @@ class NestPortFactory(Factory.BasePortFactory):
             port_cls = self.in_port_map[port_type]
 
         if port_type == 'Event':
-            port = port_cls(port_name, width, accLatency=self.acc_latency, maxBuffered=self.max_buffered, **params)
+            port = port_cls(port_name, width, accLatency=self.acc_latency, maxBuffered=self.max_buffered )
         else:
-            port = port_cls(port_name, accLatency=self.acc_latency, maxBuffered=self.max_buffered, **params)
+            port = port_cls(port_name, accLatency=self.acc_latency, maxBuffered=self.max_buffered)
         return port
 
 def check_connector_port_validity(connector_type_name, port):
@@ -72,17 +72,17 @@ class NestConnectorFactory(Factory.BaseConnectorFactory):
                 connector = RPCInConnector(port, rpc_port)
             connector.set_connector_fcn(self.connector_callback)
         elif connector_type =='Static':
-            connector = StaticConnector(self.connector_callback)
-            selector = Factory.create_selector()
             if synapses:
                 for synapse in synapses:
                     selector = getattr(synapse, 'selector', None)
                     if selector:
                         selector = Factory.create_selector(selector.name, selector.value)
+                    connector = StaticConnector(self.connector_callback, synapse.rule, selector)
                     if hasattr(synapse, 'target'):
-                        connector.connect(port, synapse.target, synapse.rule, selector)
+                        connector.connect(port, synapse.target)
         else:
             raise Exception('Unknown connector type {}'.format(connector_type))
 
         return connector
 
+# def __init__(self, connector_fcn, connection_rule, selector):
