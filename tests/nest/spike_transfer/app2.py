@@ -33,7 +33,6 @@ with open(xml, 'r') as xml_text:
                                               connector_factory, port_factory)
 
 i = 0.0
-
 while i < 2000.0:
     nest.Simulate(20)
         #spike_recorder.connect(runtime.time(), 'pop1')

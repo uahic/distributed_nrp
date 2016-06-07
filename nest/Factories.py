@@ -62,10 +62,8 @@ class NestConnectorFactory(Factory.BaseConnectorFactory):
         self.connector_callback = connector_callback
         self.port_factory = port_factory
 
-    def create_connector(self, connector_type, port, port_name, synapses, \
-                     is_output):
-
-        #check_connector_port_validity(connector_type_name, port)
+    def create_connector(self, connector_type, port, port_name, synapse, selector, is_output):
+        connector = None
         if connector_type == 'RPC':
             rpc_port = self.port_factory.create_port(port_name, 'RPC', None, is_output)
             if is_output:
@@ -73,17 +71,8 @@ class NestConnectorFactory(Factory.BaseConnectorFactory):
             else:
                 connector = RPCInConnector(port, rpc_port)
             connector.set_connector_fcn(self.connector_callback)
-            
         elif connector_type =='Static':
-
-            if synapses:
-                for synapse in synapses:
-                    selector = getattr(synapse, 'selector', None)
-                    if selector:
-                        selector = Factory.create_selector(selector.name, selector.value)
-                    connector = StaticConnector(self.connector_callback, synapse.rule, selector)
-                    if hasattr(synapse, 'target'):
-                        connector.connect(port, synapse.target)
+            self.connector_callback(port, synapse.target, synapse.rule, selector)
         else:
             raise Exception('Unknown connector type {}'.format(connector_type))
 

@@ -26,7 +26,7 @@ class ContOutputPort(Port):
 
 class ContInputPort(Port):
 
-    def __init__(self, port_name, accLatency=0.01, **kwargs):
+    def __init__(self, port_name, accLatency=10.0, **kwargs):
         self.port = nest.Create('music_cont_in_proxy')
         self.port_name = port_name
         nest.SetStatus(self.port, {'port_name':self.port_name})
@@ -64,20 +64,20 @@ class EventOutputPort(Port):
 
 class EventInputPort(Port):
 
-    def __init__(self, port_name, width, use_parrots=True, accLatency=0.01, **kwargs):
+    def __init__(self, port_name, width, use_parrots=True, accLatency=10.0, **kwargs):
+        assert width > 0
         self.width = width
         self.ports = nest.Create('music_event_in_proxy', width)
         self.port_name = port_name
         self.parrots = None
-        nest.SetStatus(self.ports,
-                {'port_name': "{}".format(self.port_name)})
-        nest.SetAcceptableLatency(port_name, accLatency)
 
         for i in xrange(self.width):
-            nest.SetStatus([self.ports[i]], {'music_channel': i})
-        if use_parrots:
-            self.parrots = nest.Create('parrot_neuron', width)
-            nest.Connect(self.ports, self.parrots, 'one_to_one')
+            print "Port :", self.ports[i]
+            nest.SetStatus([self.ports[i]], {'port_name': self.port_name, 'music_channel': i})
+        # if use_parrots:
+        #     self.parrots = nest.Create('parrot_neuron', self.width)
+        #     nest.Connect(self.ports, self.parrots, 'one_to_one')
+        nest.SetAcceptableLatency(port_name, accLatency)
 
     def connect(self, global_ids, *args, **params):
         if not args:
@@ -86,8 +86,8 @@ class EventInputPort(Port):
                 raise Exception('The number of target GIDs must either match\
                                 the width of the EventInputPort or pass the \
                                 connection rule "all_to_all" as argument.')
-        if self.parrots:
-            nest.Connect(self.parrots, global_ids, *args, **params)
-        else:
-            nest.Connect(self.ports, global_ids, *args, **params)
+        #if self.parrots:
+        #    nest.Connect(self.parrots, global_ids, *args, **params)
+        #else:
+        nest.Connect(self.ports, global_ids, *args, **params)
 

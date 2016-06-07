@@ -28,7 +28,7 @@
         <xs:complexType name="PeerType">
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
-		<xs:element name="synapse" type="SynapticConnectionType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="synapse" type="SynapticConnectionType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="parameters" type="ParameterList" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>

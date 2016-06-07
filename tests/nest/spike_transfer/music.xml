@@ -15,9 +15,21 @@
         <receiver>
             <name>app1</name>
 			<synapse>
-				<target>deimudda</target>
+				<target>nest_detector</target>
 				<rule>all_to_all</rule>
 			</synapse>
         </receiver>
     </Connection>
+	<Connection>
+		<type>Event</type>
+		<portname>spikes0</portname>
+		<connector>Static</connector>
+		<width>1</width>
+		<sender>
+			<name>app1</name>
+		</sender>
+		<receiver>
+			<name>app2</name>
+		</receiver>
+	</Connection>
 </Root>
