@@ -64,7 +64,7 @@ class EventOutputPort(Port):
 
 class EventInputPort(Port):
 
-    def __init__(self, port_name, width, use_parrots=True, accLatency=10.0, **kwargs):
+    def __init__(self, port_name, width, use_parrots=False, accLatency=10.0, **kwargs):
         assert width > 0
         self.width = width
         self.ports = nest.Create('music_event_in_proxy', width)
@@ -72,7 +72,6 @@ class EventInputPort(Port):
         self.parrots = None
 
         for i in xrange(self.width):
-            print "Port :", self.ports[i]
             nest.SetStatus([self.ports[i]], {'port_name': self.port_name, 'music_channel': i})
         # if use_parrots:
         #     self.parrots = nest.Create('parrot_neuron', self.width)

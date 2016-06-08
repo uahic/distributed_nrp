@@ -20,8 +20,8 @@ def connector_callback(port, pop_name, rule, selector):
     if selector:
         print "Ignoring selector ", selector
     #port.connect(pop_views[pop_name], rule)
-    nest.Connect(port.ports, spike_detector, 'all_to_all')
     print "Connected {} to {} ".format(port, pop_name)
+    port.connect(spike_detector, 'all_to_all')
 
 port_factory = NestPortFactory(music_setup)  # def __init__(self, music_setup, acc_latency=10.0, max_buffered=1, use_parrots=True):
 connector_factory = NestConnectorFactory(connector_callback, port_factory) # def __init__(self, connector_callback, port_factory):
@@ -37,6 +37,6 @@ print "App 1: \nConnections, detector: {}, proxy: {}".format(nest.GetConnections
 
 while i < 2000.0:
     nest.Simulate(20)
-    print nest.GetStatus(spike_detector, 'events')
+    #print nest.GetStatus(spike_detector, 'events')
     i += 0.01
 
