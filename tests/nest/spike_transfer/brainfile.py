@@ -1,5 +1,6 @@
 import pyNN.nest as sim
 import numpy
+import nest
 __population_views = {}
 
 
@@ -8,11 +9,10 @@ __population_views['pop1'] = pop1
 
 source = sim.Population(1, sim.SpikeSourcePoisson(rate=1000000.0))
 
-sim.Projection(source, pop1, sim.AllToAllConnector())
+nest_source = nest.Create('poisson_generator')
+nest.SetStatus(nest_source, {'rate': 100000.0})
+nest.Connect(nest_source, map(int, pop1.all_cells), 'all_to_all')
+
 print "Network loaded"
-#pop1.sample(10).record('v')
-
-
-
 
 
