@@ -1,5 +1,5 @@
 timestep=20.0
-xml=/root/HBP/music_wizard/tests/nest/spike_transfer/music.xml
+xml=music.xml
 
 [app1]
   np=1
