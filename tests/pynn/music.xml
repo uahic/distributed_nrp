@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Root>
+    <Connection>
+        <type>Event</type>
+        <portname>spikes2</portname>
+        <connector>Static</connector>
+        <width>10</width>
+        <sender>
+            <name>app2</name>
+			<synapse>
+				<target>pop1</target>
+				<rule>all_to_all</rule>
+			</synapse>
+        </sender>
+        <receiver>
+            <name>app1</name>
+			<synapse>
+				<target>detector</target>
+				<rule>all_to_all</rule>
+			</synapse>
+        </receiver>
+    </Connection>
+	<Connection>
+		<type>Event</type>
+		<portname>spikes0</portname>
+		<connector>Static</connector>
+		<width>1</width>
+		<sender>
+			<name>app1</name>
+		</sender>
+		<receiver>
+			<name>app2</name>
+		</receiver>
+	</Connection>
+</Root>

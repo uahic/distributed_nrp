@@ -55,7 +55,7 @@ class ProxyFactory(object):
     def _create_and_connect_proxy(self, xml_connection, peer, is_output):
         port_name = xml_connection.portname
         port_type = xml_connection.type
-        width = xml_connection.width
+        width = int(xml_connection.width)
         #connector_type = xml_connection.connector
         kwargs = extract_kwargs(peer.parameters)
 
@@ -66,12 +66,14 @@ class ProxyFactory(object):
                 xml_selector = getattr(xml_synapse, 'selector', None)
                 if xml_selector:
                     selector = self._create_selector(xml_selector.name, xml_selector.value)
+                else:
+                    selector = None
                 target_name = getattr(xml_synapse, 'target')
                 try:
                     target_pop = self.population_dict[target_name]
                 except:
                     raise Exception("Population with name (key) {} was not found.".format(target_name))
-                self.connector_factory.connect_synapse(proxy, port_name, xml_synapse, selector, target_pop, is_output)
+                self.connector_factory.create_and_connect_synapse(proxy, port_name, xml_synapse, selector, target_pop, is_output)
         return proxy
 
     def _assemble_proxy(self, xml_connection):

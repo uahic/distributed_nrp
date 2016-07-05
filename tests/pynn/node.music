@@ -1,0 +1,15 @@
+timestep=20.0
+xml=music.xml
+
+[app1]
+  np=1
+  binary=./app1.py
+
+[app2]
+  np=1
+  binary=./app2.py
+
+app2.spikes2 -> app1.spikes2[10]
+app1.spikes0 -> app2.spikes0[2]
+
+
